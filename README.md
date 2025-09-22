@@ -1,6 +1,6 @@
 # EAMET-massive-editing
 Official code implementation of "EAMET: ROBUST MASSIVE MODEL EDITING
-VIA EMBEDDING ALIGNMENT OPTIMIZATION"
+VIA EMBEDDING ALIGNMENT OPTIMIZATION (https://arxiv.org/abs/2505.11876)"
 
 ## Environment Setup
 
