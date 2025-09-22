@@ -11,8 +11,6 @@ import numpy as np
 import torch
 from sklearn.feature_extraction.text import TfidfVectorizer
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from wise import WISE
-from grace import GRACE
 
 from dsets import AttributeSnippets
 
@@ -119,10 +117,7 @@ def test_batch_prediction_acc(model, tok, prompts: typing.List[str], target):
 
     prefix_lens = [len(n) for n in tok(prompts)["input_ids"]] 
 
-    if isinstance(model, WISE) or isinstance(model, GRACE):
-        name_or_path = model.model.config._name_or_path
-    else:
-        name_or_path = model.config._name_or_path
+    name_or_path = model.config._name_or_path
 
     if "deepseek" in str(name_or_path).lower():
         target_tok = tok(f" {target}")["input_ids"]
@@ -169,10 +164,7 @@ def test_batch_prediction_acc(model, tok, prompts: typing.List[str], target):
 
 def test_batch_prediction_acc_neighborhood(model, tok, prompts: typing.List[str], target):
     # 启用数据并行
-    if isinstance(model, WISE) or isinstance(model, GRACE):
-        name_or_path = model.model.config._name_or_path
-    else:
-        name_or_path = model.config._name_or_path
+    name_or_path = model.config._name_or_path
 
     tok.padding_side = "right"
     is_data_parallel = False

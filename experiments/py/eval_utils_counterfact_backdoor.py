@@ -21,8 +21,6 @@ from util.perplexity import perplexity
 import random
 from sklearn.metrics import accuracy_score, recall_score, precision_score
 import ssl
-from wise import WISE
-from grace import GRACE
 
 try:
     _create_unverified_https_context = ssl._create_unverified_context
@@ -186,10 +184,7 @@ def test_batch_prediction(
         return_tensors="pt",
     ).to("cuda")
 
-    if isinstance(model, WISE) or isinstance(model, GRACE):
-        name_or_path = model.model.config._name_or_path
-    else:
-        name_or_path = model.config._name_or_path
+    name_or_path = model.config._name_or_path
     
     if "deepseek" in str(name_or_path).lower():
         a_tok, b_tok = (tok(f" {n}")["input_ids"] for n in [target_new, target_true])
