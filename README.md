@@ -2,6 +2,9 @@
 Official code implementation of "EAMET: ROBUST MASSIVE MODEL EDITING
 VIA EMBEDDING ALIGNMENT OPTIMIZATION (https://arxiv.org/abs/2505.11876)"
 
+## News
+- [2026.01.26] Our work is accepted to ICLR'26!
+
 ## Environment Setup
 
 ### Requirements
